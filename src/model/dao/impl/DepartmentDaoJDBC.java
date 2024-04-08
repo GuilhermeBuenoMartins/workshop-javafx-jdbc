@@ -34,11 +34,11 @@ public class DepartmentDaoJDBC implements DepartmentDao {
             if (rowsAffected > 0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if (rs.next()) {
-                    obj.setId(rs.getInt("1"));
+                    obj.setId(rs.getInt(1));
                 }
             }
         } catch (SQLException e) {
-            throw new DbException(e.getMessage());
+            throw new DbException("Unexpected error! No rows affected!");
         } finally {
             DB.closeStatement(st);
         }
